@@ -5,14 +5,13 @@ hugo version
 
 # Retrieve the input arguments/parameters.
 FIREBASE_DEPLOY_TOKEN=$1
-ALIAS=${2:-alias}
-HUGO_PARAMS=${3:-hugo-params}
+HUGO_PARAMS=${2:-hugo-params}
 
 # Build the Hugo site.
 hugo $HUGO_PARAMS
 
 # Publish to Google Firebase.
-firebase use --token $FIREBASE_DEPLOY_TOKEN $ALIAS
+firebase use --token $FIREBASE_DEPLOY_TOKEN
 firebase deploy -m "
   Successful Deployment: 
   Event: $GITHUB_EVENT_NAME,
